@@ -1,26 +1,27 @@
 #!/usr/bin/env bash
 
+# NOTE: Bash uses 64-bit signed integers.
+# So we have to utilize 'bc' instead.
+
 NUM="$1"
 
 calc_square () {
-  n=$1
-  echo "2^$((n-1))" | bc
+  echo "2^(($1-1))" | bc
 }
 
 calc_total () {
-  t=0
-  for i in {1..64}; do
-    val=$(calc_square $i)
-    t=$(echo $t + $val | bc)
-  done
-  echo $t
+  echo "2^64-1" | bc
 }
 
-if [ "$NUM" == "total" ]; then
+
+if [[ "$NUM" == "total" ]]; then
   calc_total
-elif [ -z "$NUM" -o "$NUM" -lt 1 -o "$NUM" -gt 64 ]; then
-  echo "Error: invalid input"
-  exit 1
+elif
+  [[ -z "$NUM" ]] ||
+  [[ "$NUM" -lt 1 ]] ||
+  [[ "$NUM" -gt 64 ]]; then
+    echo "Error: invalid input"
+    exit 1
 else
     calc_square $NUM
 fi
