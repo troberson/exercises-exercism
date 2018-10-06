@@ -3,18 +3,27 @@
 mode="$1"
 num="$2"
 
-square_of_sum () {
+id () {
+  echo $1
+}
+
+square () {
+  echo $(($1**2))
+}
+
+total () {
   for ((i=0;i<=$num;i++)); do
-    ((total+=i))
+    ((total+=$($1 $i)))
   done
-  echo $((total**2))
+  echo $($2 $total)
+}
+
+square_of_sum () {
+  total id square
 }
 
 sum_of_squares () {
-  for ((i=0;i<=$num;i++)); do
-    ((total+=i**2))
-  done
-  echo $total
+  total square id
 }
 
 difference () {
