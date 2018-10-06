@@ -16,7 +16,7 @@ fi
 count=0
 for ((i=0;i<${#s1};i++)); do
   if [[ ${s1:$i:1} != ${s2:$i:1} ]]; then
-    ((count+=1))
+    ((count++))
   fi
 done
 echo $count
