@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-word=$(echo "$1" | tr 'a-z' 'A-Z')
+word="${1^^}"
 
 ok=true
 for c in {A..Z}; do
