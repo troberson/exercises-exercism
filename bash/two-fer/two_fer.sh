@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 
-name="$1"
-
-echo "One for ${name:-you}, one for me."
+echo "One for ${1-you}, one for me."
 
