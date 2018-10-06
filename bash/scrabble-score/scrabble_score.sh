@@ -8,8 +8,7 @@
 #J, X                               8
 #Q, Z                               10
 
-echo $(( $(echo "0$1" | 
-  tr 'a-z' 'A-Z' |
+echo $(( $(echo "0${1^^}" |
   sed \
   -e "s/[AEIOULNRST]/+1/g"\
   -e "s/[DG]/+2/g"\
