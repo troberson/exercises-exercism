@@ -25,7 +25,9 @@ for choice in $choices; do
   done
 
   # if all letters were removed, it must be a match
-  [[ -z "$word2" ]] && result+="$choice "
+  if [[ -z "$word2" ]]; then
+    result+="$choice "
+  fi
 done
 
 # print the results
