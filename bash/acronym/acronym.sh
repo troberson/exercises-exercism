@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-for w in $(echo "${1^^}" | tr -c '[:upper:]' ' '); do
+declare -ur phrase=${1//[^[:alpha:]]/ }
+for w in $phrase; do
   echo -n ${w:0:1}
 done
 
