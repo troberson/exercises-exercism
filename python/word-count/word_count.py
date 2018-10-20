@@ -1,18 +1,13 @@
 import re
-from typing import Dict, List, Match, Optional, Set
+from typing import List, Match, Optional, Set
 
 
 def word_count(phrase_orig: str) -> dict:
     phrase: str = re.sub(r'[,\n,_]', ' ', phrase_orig)
-    phrase_list: List[str] =\
-        [word for word in map(clean_word, phrase.split()) if word]
+    phrase_list: List[str] = list(map(clean_word, phrase.split()))
     words: Set[str] = set(phrase_list)
 
-    freq: Dict[str, int] = dict()
-    for word in words:
-        freq[word] = phrase_list.count(word)
-
-    return freq
+    return dict([(word, phrase_list.count(word)) for word in words if word])
 
 
 def clean_word(word: str) -> str:
