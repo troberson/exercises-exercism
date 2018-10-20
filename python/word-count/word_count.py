@@ -10,5 +10,5 @@ def word_count(phrase_orig: str) -> dict:
 
 
 def clean_word(word: str) -> str:
-    match: Optional[Match] = re.match(r"\'?([0-9a-z\']+)\b\'?", word.lower())
+    match: Optional[Match] = re.match(r"'?([0-9a-z']+)\b'?", word.lower())
     return match.group(1) if match else ''
